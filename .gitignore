@@ -1,0 +1,6 @@
+bin/
+runs/
+__pycache__/
+*.csv
+*.log
+.DS_Store
