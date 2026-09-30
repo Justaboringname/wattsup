@@ -1,5 +1,5 @@
 #!/bin/zsh
-# heatwire —— 把 CPU / 内存 / GPU(硬件光追、Metal 4 张量) / ANE 同时拉满，边烤边记功耗和温度。
+# WattsUp —— 把 CPU / 内存 / GPU(硬件光追、Metal 4 张量) / ANE 同时拉满，边烤边记功耗和温度。
 #
 #   ./heater.sh [预设] [秒数]          预设默认 peak，秒数默认 60
 #
