@@ -136,6 +136,7 @@ Standalone tools:
 | `bin/ane_stress <s> <threads> <size> <model>` | Neural Engine load using the system's built-in Vision models |
 | `bin/membw <s> <threads>` | Memory-bandwidth load |
 | `bin/fused_stress ...` | Fused ray-tracing + tensor kernel (negative result, kept for comparison) |
+| `bin/raster_stress <s> <w> <h> <layers> <samples> <grid> <passes> <alu>` | Plain rasterisation load: alpha-blended layers sampling a large texture. About 77 W at `5120 2880 16 1 64 4 16`, well below ray tracing, so no preset uses it |
 | `bin/throttlewatch <s> <interval>` | Prints changes in the IOReport throttle-trigger states |
 | `bin/hidtemps` | Lists every IOHID temperature sensor, including `PMU tdie*` / `tdev*` |
 | `log/tvdlog.py <s>` | Logs `TVD*`, core temperatures, cluster clocks and power every 2 s |

@@ -134,6 +134,7 @@ RT_TRIS=10000 ./heater.sh peak 30   # 任意参数都能用环境变量覆盖
 | `bin/ane_stress <秒> <线程> <边长> <模型>` | 用系统自带的 Vision 模型压 Neural Engine |
 | `bin/membw <秒> <线程>` | 内存带宽压力 |
 | `bin/fused_stress ...` | 光追 + 张量融合内核（负面结果，留作对照） |
+| `bin/raster_stress <秒> <宽> <高> <层数> <采样数> <网格> <pass 数> <ALU>` | 传统光栅压力：多层半透明网格采样一张大贴图。`5120 2880 16 1 64 4 16` 时约 77 W，远低于光追，所以没有预设用它 |
 | `bin/throttlewatch <秒> <间隔>` | 打印 IOReport 降频触发状态的变化 |
 | `bin/hidtemps` | 列出所有 IOHID 温度传感器（含 `PMU tdie*` / `tdev*`） |
 | `log/tvdlog.py <秒>` | 每 2 秒记 `TVD*`、核心温度、各簇频率、功耗 |
