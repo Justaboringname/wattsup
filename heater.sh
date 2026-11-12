@@ -4,7 +4,7 @@
 #   ./heater.sh [预设] [秒数]          预设默认 peak，秒数默认 60
 #
 # 预设(各单元的参数，见下表)：
-#   peak    CPU + 内存 + 光追 + ANE(不跑张量)  —— 实测整机峰值 326 W 的配置
+#   peak    CPU + 内存 + 光追 + ANE(不跑张量)  —— 实测整机峰值 330 W 的配置
 #   mix     CPU + 内存 + 光追 + 张量 + ANE      —— 所有单元都有活干，峰值约 305 W
 #   cpu / mem / gpu / rt / tensor / ane          —— 单烤某一块
 # 任何一项都能用环境变量覆盖：SF_T SF_NICE MEM_T MEM_NICE RT_TRIS NA ANE_T，例如
