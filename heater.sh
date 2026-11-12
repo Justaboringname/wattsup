@@ -10,7 +10,7 @@
 # 任何一项都能用环境变量覆盖：SF_T SF_NICE MEM_T MEM_NICE RT_TRIS NA ANE_T，例如
 #   RT_TRIS=10000 ./heater.sh peak 30
 #
-# 每次运行的日志放在 runs/<时间>-<预设>/ 下，跑完打印汇总。
+# 每次运行的日志放在 runs/<时间>-<预设>/ 下，跑完打印汇总；超过 3 天的旧日志在下次运行时自动删除。
 set -u
 cd "$(dirname "$0")"
 PRESET=${1:-peak}; T=${2:-60}
@@ -34,6 +34,7 @@ done
 [ $SF_T -gt 0 ] && ! command -v stockfish >/dev/null && { echo "缺少 stockfish：brew install stockfish"; exit 1; }
 [ -x bin/rt_stress ] || { echo "先 make"; exit 1; }
 
+[ -d runs ] && find runs -mindepth 1 -maxdepth 1 -type d -name '20*-*' -mmin +4320 -exec rm -rf {} +   # 删 3 天前的旧日志
 RUN=runs/$(date +%Y%m%d-%H%M%S)-$PRESET
 mkdir -p $RUN
 echo idle > $RUN/phase

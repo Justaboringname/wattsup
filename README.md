@@ -22,18 +22,18 @@ Script output is in Chinese; the numbers and file names are not.
 | OS | macOS 27.0.1 (26A434) |
 | Peripherals | Studio Display XDR (self-powered, draws nothing from the Mac); a ~15 W desk lamp on a USB-C port |
 
-## Record: 326 W
+## Record: 330 W
 
 | | |
 |---|---|
-| Whole system, `PSTR` | **326.4 W** (325.7 W on a second run of the same config) |
+| Whole system, `PSTR` | **330.4 W** (2026-11-12; the other three runs that day read 318.3, 328.4 and 325.6 W; the earlier record was 326.4 W on 2026-09-30) |
 | Of which USB-C output (the lamp) | 14.9 W |
-| **The Mac itself** | **311.6 W** |
+| **The Mac itself** | **315.5 W** |
 | Config | `./heater.sh peak`: 18 CPU threads + 4 memory threads + hardware ray tracing (5000 triangles) + 8 ANE threads, **no tensor work** |
-| Conditions | 25 s runs, each started cold; fans pinned at 100%; sampled every 0.3 s; the peak came 2.6 s in |
+| Conditions | 60 s runs, back to back about 2 minutes apart (CPU back down to ~44 °C before the record run); fans pinned at 100%; sampled every 0.3 s; the peak came 6.5 s in |
 
 - `PSTR` is the SMC's reading of the **internal PSU's 12 V DC output**, not power at the wall. Wall draw is higher by the PSU's conversion loss.
-- The peak lasts about 10–15 s, until the Super cores throttle (see below). With fans at 100%, the `mix` config settles at about 250 W for the Mac itself. The `peak` config was only run for 25 s at a time, so its steady state was not measured.
+- The peak lasts about 10–15 s, until the Super cores throttle (see below). With fans at 100%, the `mix` config settles at about 250 W for the Mac itself. The `peak` config averaged 241.8 W for the Mac itself over the last 30 s of the 60 s record run.
 
 ## Per-unit measurements
 
@@ -56,7 +56,7 @@ Combined:
 
 | Config | Whole-system peak | Mac-itself peak |
 |---|---|---|
-| `peak` (ray tracing, no tensor) | 325.7 / 326.4 W | 310.8 / 311.6 W |
+| `peak` (ray tracing, no tensor) | 330.4 W (earlier: 325.7 / 326.4 W) | 315.5 W (earlier: 310.8 / 311.6 W) |
 | `mix` (ray tracing + tensor) | 304.5 / 305.1 W | 289.7 / 290.2 W |
 | 18 CPU threads + ray tracing (20k triangles) + tensor, fans auto | 280 W | 265 W |
 
@@ -125,7 +125,7 @@ Presets:
 | `tensor` | — | — | — | yes | — |
 | `ane` | — | — | — | — | 8 |
 
-Each run writes to `runs/<time>-<preset>/`: `slow.csv` every 3 s (power, temperatures, `TVD*`, fans, clocks) and `fast.csv` every 0.3 s (whole-system power). The peak and the last-30-second averages are printed at the end.
+Each run writes to `runs/<time>-<preset>/`: `slow.csv` every 3 s (power, temperatures, `TVD*`, fans, clocks) and `fast.csv` every 0.3 s (whole-system power). The peak and the last-30-second averages are printed at the end. Runs older than 3 days are deleted automatically the next time the script starts.
 
 Standalone tools:
 
