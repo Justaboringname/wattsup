@@ -1,6 +1,20 @@
-# WattsUp
+<div align="center">
 
-*[中文说明](README.zh.md)*
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/hero-dark.svg">
+  <img src="assets/hero-light.svg" width="100%" alt="WattsUp, an Apple Silicon stress test. How many watts can a Mac burn? The CPU, memory, GPU and Neural Engine run at full load at once; the heater.sh peak preset reached 330.4 W whole-system (PSTR).">
+</picture>
+
+<br>
+
+[![License: MIT](https://img.shields.io/badge/license-MIT-788c5d?style=flat-square)](LICENSE)
+![Swift · C · Python](https://img.shields.io/badge/code-Swift%20%C2%B7%20C%20%C2%B7%20Python-788c5d?style=flat-square)
+![Tested on M5 Max, macOS 27](https://img.shields.io/badge/tested%20on-M5%20Max%20%C2%B7%20macOS%2027-788c5d?style=flat-square)
+![Apple Silicon stress test](https://img.shields.io/badge/Apple%20Silicon-stress%20test-d97757?style=flat-square)
+
+**English** · [简体中文](README.zh.md)
+
+</div>
 
 _Last updated: 2026-09-30_
 
@@ -63,6 +77,11 @@ Combined:
 ### Why ray tracing alone beats ray tracing plus tensor work
 
 The GPU itself sits at 116–118 W either way, which looks like its own ceiling. The difference is outside the GPU:
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/gpu-dark.svg">
+  <img src="assets/gpu-light.svg" width="100%" alt="Bar chart in watts. Ray tracing only: GPU core 96.5 W plus AFR0 20 W, whole system 186 W. Ray tracing plus tensor: GPU core 106 W plus AFR0 12 W, whole system 172 W. Tensor only: GPU core 95 W plus AFR0 0.6 W, whole system 125 W.">
+</picture>
 
 | On the GPU | GPU core | AFR0 | Whole system |
 |---|---|---|---|
@@ -158,4 +177,4 @@ Standalone tools:
 
 ## License
 
-MIT
+[MIT](LICENSE)

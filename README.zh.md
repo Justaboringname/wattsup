@@ -1,10 +1,24 @@
-# WattsUp
+<div align="center">
 
-*[English](README.md)*
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/hero-dark.svg">
+  <img src="assets/hero-light.svg" width="100%" alt="WattsUp，Apple Silicon 压力测试：你的 Mac 能烧多少瓦？CPU、内存、GPU、Neural Engine 同时拉满，heater.sh 的 peak 预设整机（PSTR）峰值 330.4 W。">
+</picture>
+
+<br>
+
+[![License: MIT](https://img.shields.io/badge/license-MIT-788c5d?style=flat-square)](LICENSE)
+![Swift · C · Python](https://img.shields.io/badge/code-Swift%20%C2%B7%20C%20%C2%B7%20Python-788c5d?style=flat-square)
+![Tested on M5 Max, macOS 27](https://img.shields.io/badge/tested%20on-M5%20Max%20%C2%B7%20macOS%2027-788c5d?style=flat-square)
+![Apple Silicon stress test](https://img.shields.io/badge/Apple%20Silicon-stress%20test-d97757?style=flat-square)
+
+[English](README.md) · **简体中文**
+
+</div>
 
 _Last updated: 2026-09-30_
 
-**WattsUp**（谐音 what's up + 瓦特）：你的 Mac 此刻在烧多少瓦？把 Apple Silicon Mac 当电暖器用的"电阻丝模式"：CPU、内存、GPU（硬件光追 + Metal 4 张量）、Neural Engine 同时拉满，边烤边记录功耗、温度、频率。顺便是一份"这台机器的电都花在哪了"的实测记录。
+**WattsUp**（谐音 what's up + 瓦特）：你的 Mac 此刻在烧多少瓦？把 Apple Silicon Mac 当电暖器用的“电阻丝模式”：CPU、内存、GPU（硬件光追 + Metal 4 张量）、Neural Engine 同时拉满，边烤边记录功耗、温度、频率。顺便是一份“这台机器的电都花在哪了”的实测记录。
 
 ## 测试机器
 
@@ -35,7 +49,7 @@ _Last updated: 2026-09-30_
 
 ## 各单元实测
 
-除注明外，都是单独跑 10–25 秒、风扇自动。GPU 功耗一律按"GPU + AFR0"计（见 [AFR0](#afr0-是什么)）。
+除注明外，都是单独跑 10–25 秒、风扇自动。GPU 功耗一律按“GPU + AFR0”计（见 [AFR0](#afr0-是什么)）。
 
 | 单元 | 负载 | 功耗 | 备注 |
 |---|---|---|---|
@@ -62,6 +76,11 @@ _Last updated: 2026-09-30_
 
 GPU 本体在两种情况下都在 116–118 W，像是碰到了 GPU 自己的上限。区别在 GPU 以外：
 
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/gpu-dark.svg">
+  <img src="assets/gpu-light.svg" width="100%" alt="条形图（单位瓦）：只跑光追，GPU 本体 96.5 W 加 AFR0 20 W，整机 186 W；光追 + 张量，GPU 本体 106 W 加 AFR0 12 W，整机 172 W；只跑张量，GPU 本体 95 W 加 AFR0 0.6 W，整机 125 W。">
+</picture>
+
 | GPU 上跑什么 | GPU 本体 | AFR0 | 整机 |
 |---|---|---|---|
 | 只跑光追 5000 | 96.5 W | 20 W | 186 W |
@@ -84,7 +103,7 @@ GPU 本体在两种情况下都在 116–118 W，像是碰到了 GPU 自己的�
 **吻合但未证明因果的：**
 - 降频开始的时刻，SMC 键 `TVDP` / `TVDC` / `TVD0` 正好到约 93 °C，比所有物理核心传感器高 10–20 °C；降频后 `TVDP` 回落到 84–86 °C。
 - 从读数看 `TVD*` 更像是 SMC 估算出来的芯片内部热点，不是某个物理元件：`TVD0` 始终等于其他几个里的最大值，`TVDC` 和 `TVDP` 的读数完全一样。`TVDP` 跟 CPU 负载走（推测对应 Super 核），`TVDG` 跟 GPU 负载走。键名的含义没有公开资料，以上都是推断。
-- IOReport "SoC Stats / Events" 里有一组降频触发状态（`*_THROTTLE_{PPT,EXT,ADCLK,HW,SW,DITHER}_TRIG`、`CPU_SOCHOT*_L`），全程没有记录到任何触发。它们是否真的在更新，我不确定。
+- IOReport “SoC Stats / Events” 里有一组降频触发状态（`*_THROTTLE_{PPT,EXT,ADCLK,HW,SW,DITHER}_TRIG`、`CPU_SOCHOT*_L`），全程没有记录到任何触发。它们是否真的在更新，我不确定。
 
 **改调度也拉不高稳态**：降低 CPU/内存优先级、减少 Stockfish 线程、换光追场景、减少内存线程，稳态都停在 Mac 本体 247–252 W。
 
@@ -96,9 +115,9 @@ IOReport 能耗通道里的一路，这里把它算进 GPU 功耗：
 - 它有自己的一张 13 档调频表，338–1620 MHz，在设备树 `pmgr` 的 `afr-perf-states` 里。
 - 档位由电源协处理器按 GPU 的内存带宽来升降：策略名 `agx-afr-bw-*`，阈值单位是 GB/s。
 - 空闲和纯 CPU 负载时是 0 W；GPU 纯计算、不碰内存时不到 1 W；吃内存的 GPU 负载下能到约 25 W。
-- 全称没查到。它不和 "GPU Energy" 重复：GPU 通道只有 44 W 而整机比空闲多 101 W 的情况下，加上 AFR0 才补得上大半。
+- 全称没查到。它不和 “GPU Energy” 重复：GPU 通道只有 44 W 而整机比空闲多 101 W 的情况下，加上 AFR0 才补得上大半。
 
-[`fanctl`](https://github.com/Justaboringname/fanctl) 从 `dceea80` 起 GPU 功耗已经包含 AFR0；更早的版本把它单列在 "Other channels" 里。`log/readings.py` 两种都认，结果口径一致。
+[`fanctl`](https://github.com/Justaboringname/fanctl) 从 `dceea80` 起 GPU 功耗已经包含 AFR0；更早的版本把它单列在 “Other channels” 里。`log/readings.py` 两种都认，结果口径一致。
 
 ## 用法
 
@@ -156,4 +175,4 @@ RT_TRIS=10000 ./heater.sh peak 30   # 任意参数都能用环境变量覆盖
 
 ## License
 
-MIT
+[MIT](LICENSE)

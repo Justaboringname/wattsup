@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="420" viewBox="0 0 1280 420" role="img" aria-labelledby="t">
+<title id="t">WattsUp: load the CPU, memory, GPU and Neural Engine of an Apple Silicon Mac at once and log the watts. The peak preset reached 330.4 W whole-system (PSTR) on a Mac Studio M5 Max.</title>
+<style>
+.sans { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif; }
+.mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+.tx { fill: #ecece8; }
+.mu { fill: #9b9a94; }
+.clay { fill: #d97757; }
+.sage { fill: #9bb07c; }
+.eyebrow { font-size: 22px; letter-spacing: 4px; }
+.title { font-weight: 700; letter-spacing: -1.5px; }
+.tag { font-size: 28px; }
+.node { font-size: 24px; font-weight: 600; }
+.sub { font-size: 22px; }
+.cap { font-size: 22px; }
+.small { font-size: 20px; }
+.num { font-variant-numeric: tabular-nums; }
+.big { font-size: 40px; font-weight: 700; letter-spacing: -0.5px; }
+</style>
+<rect x="0.5" y="0.5" width="1279" height="419" rx="20" fill="#181818" stroke="#2f2f2f" stroke-width="1"/>
+<text class="mono eyebrow mu" x="72" y="104">APPLE SILICON STRESS TEST</text>
+<text class="sans title tx" x="68" y="190" style="font-size:76px">WattsUp</text>
+<text class="sans tag mu" x="72" y="250">How many watts can a Mac burn?</text>
+<text class="sans tag mu" x="72" y="290">Every unit at full load at once.</text>
+<text class="sans tag mu" x="72" y="330">Power, heat and clocks, logged.</text>
+<g fill="none" stroke="#5a5955" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+<path d="M878 93 H900 C950.0 93 950.0 210 1000 210"/>
+<path d="M878 171 H900 C950.0 171 950.0 210 1000 210"/>
+<path d="M878 249 H900 C950.0 249 950.0 210 1000 210"/>
+<path d="M878 327 H900 C950.0 327 950.0 210 1000 210"/>
+</g>
+<rect x="668" y="69.0" width="210" height="48" rx="12" fill="#212121" stroke="#333332" stroke-width="1.5"/>
+<circle cx="690" cy="93.0" r="5" fill="#9bb07c"/>
+<text class="sans node tx" x="704" y="101.0">CPU</text>
+<rect x="668" y="147.0" width="210" height="48" rx="12" fill="#212121" stroke="#333332" stroke-width="1.5"/>
+<circle cx="690" cy="171.0" r="5" fill="#9bb07c"/>
+<text class="sans node tx" x="704" y="179.0">Memory</text>
+<rect x="668" y="225.0" width="210" height="48" rx="12" fill="#212121" stroke="#333332" stroke-width="1.5"/>
+<circle cx="690" cy="249.0" r="5" fill="#9bb07c"/>
+<text class="sans node tx" x="704" y="257.0">GPU</text>
+<rect x="668" y="303.0" width="210" height="48" rx="12" fill="#212121" stroke="#333332" stroke-width="1.5"/>
+<circle cx="690" cy="327.0" r="5" fill="#9bb07c"/>
+<text class="sans node tx" x="704" y="335.0">Neural Engine</text>
+<rect x="1000" y="150.0" width="216" height="120" rx="14" fill="#212121" stroke="#333332" stroke-width="1.5"/>
+<text class="sans big clay num" x="1108.0" y="214" text-anchor="middle">330.4 W</text>
+<text class="sans sub mu" x="1108.0" y="252" text-anchor="middle">PSTR peak</text>
+<text class="mono cap clay" x="1002" y="308.0">heater.sh peak</text>
+</svg>
